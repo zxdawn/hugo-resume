@@ -4,22 +4,25 @@
        {{ partial "portfolio/skills.html" . }}
    {{ end }}
    {{ if .Site.Params.showProjects }}
-      {{ with .Site.GetPage "section" "projects/creations" }}
+      {{ with .Site.GetPage "section" "/about/projects/creations" }}
          {{ .Scratch.Set "sectionId" "projects" }}
-         {{ partial "sectionSummary" . }}
+         {{ .Scratch.Set "subsectionId" "projects" }}
+         {{ partial "subsection.html" . }}
       {{ end }}
    {{ end }}
    {{ if .Site.Params.showOpenSource }}
-      {{ with .Site.GetPage "section" "projects/contributions" }}
-         {{ .Scratch.Set "sectionId" "open" }}
-         {{ partial "sectionSummary" . }}
+      {{ with .Site.GetPage "section" "/about/projects/contributions" }}
+         {{ .Scratch.Set "sectionId" "projects" }}
+         {{ .Scratch.Set "subsectionId" "open" }}
+         {{ partial "subsection.html" . }}
       {{ end }}
    {{ end }}
    {{ if .Site.Params.showPublications }}
-      {{ with .Site.GetPage "section" "publications" }}
-         {{ .Scratch.Set "sectionId" (default "Publications" .Site.Params.publicationsAlternateName) }}
-         {{ partial "sectionSummary" . }}
-      {{ end }}
+      {{ with .Site.GetPage "/about/publications" }}
+         {{ .Scratch.Set "sectionId" "publications" }}
+         {{ .Scratch.Set "subsectionId" "publications" }}
+         {{ partial "subsection.html" . }}
+      {{ end }}   
    {{ end }}
    {{ if .Site.Params.showExperience }}
        {{ partial "portfolio/experience.html" . }}
@@ -30,6 +33,7 @@
    {{ if .Site.Params.showBlog }}
       {{ with .Site.GetPage "section" "blog" }}
          {{ .Scratch.Set "sectionId" "blog" }}
+         {{ .Scratch.Set "subsectionId" "blog" }}
          {{ partial "sectionSummary" . }}
       {{ end }}
    {{ end }}

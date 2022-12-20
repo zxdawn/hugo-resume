@@ -1,4 +1,4 @@
-<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="{{ .Scratch.Get "sectionId" }}">
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="{{ .Scratch.Get "subsectionId" }}">
   <div class="my-auto" id="projects-content">
     <div class=" pb-2 pt-3">
       <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
@@ -6,8 +6,10 @@
     </div>
   
     {{ $featuredPages := where .Pages "Params.featured" true }}
+    {{ $id := .Scratch.Get "sectionId" }}
     {{ range $featuredPages }}
-      {{ partial (printf "%s%s" .Section "Summary") . }}
+      <!-- {{ partial (printf "%s%s" .Section "Summary") . }} -->
+      {{ partial (printf "%v%s" $id "Summary") . }}
     {{ end }}
   </div>
   {{ if gt .Pages $featuredPages }}
