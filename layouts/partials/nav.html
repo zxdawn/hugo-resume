@@ -48,6 +48,11 @@
             <a class="nav-link js-scroll-trigger" href="/">Blog</a>
           </li>
       {{ end }}
+      {{ if .Site.Params.showCV }}
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="https://github.com/zxdawn/XZ-CV/blob/main/cv.pdf">CV (PDF)</a>
+          </li>
+      {{ end }}
     </ul>
   </div>
 </nav>
